@@ -43,5 +43,9 @@ def get_data(html):
         item_list.append(data)
     return item_list
 
+
 def main_data():
     return get_data(get_html(URL))
+
+
+

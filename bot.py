@@ -1,6 +1,8 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
-from handlers import *
+import logging
+
+from db import *
 from settings import *
 
 log = logging.getLogger()
@@ -21,6 +23,10 @@ def main():
 
     dp.add_handler(CommandHandler('start', greet_user))
     dp.add_handler(MessageHandler(Filters.regex('^(Прислать данные)$'), send_data))
+
+    mybot.job_queue.run_repeating(get_create_data, interval=20, first=0)
+
+    dp.add_handler(MessageHandler(Filters.text, talk_to_me))
 
     mybot.start_polling()
     mybot.idle()

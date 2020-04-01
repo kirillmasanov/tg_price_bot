@@ -14,7 +14,6 @@ def get_keyboard():
     ], resize_keyboard=True)
     return my_keyboard
 
-
 def greet_user(update: Update, context: CallbackContext):
     text = 'Привет!'
     logging.info(text)
@@ -22,7 +21,7 @@ def greet_user(update: Update, context: CallbackContext):
 
 
 def send_data(update: Update, context: CallbackContext):
-    text = main_data()
+    text = get_create_data()
     update.message.reply_text(text, reply_markup=get_keyboard())
 
 
