@@ -23,6 +23,8 @@ def main():
 
     dp.add_handler(CommandHandler('start', greet_user))
     dp.add_handler(MessageHandler(Filters.regex('^(Прислать данные)$'), send_data))
+    dp.add_handler(MessageHandler(Filters.regex('^(1Tb)$'), send_1tb))
+    dp.add_handler(MessageHandler(Filters.regex('^(2Tb)$'), send_2tb))
 
     mybot.job_queue.run_repeating(get_create_data, interval=20, first=0)
 
